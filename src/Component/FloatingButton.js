@@ -1,11 +1,12 @@
-// FloatingButton.js
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import React, { useState } from 'react';
 
  import { useContext } from 'react';
 import userContextNote from '../Context/userContextNote';
 const FloatingButton = () => {
-  
+  const notify = () => toast("Note Added!");
   const { addNote } = useContext(userContextNote)
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -31,20 +32,26 @@ const FloatingButton = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    notify()
     addNote(title,description)
-    // Handle form submission logic here
-
-    // You can perform further actions with the title and description values
-    closeModal(); // Close the modal after submission
+  
+  
+    closeModal(); 
   };
 
   return (
-    <div className='flex flex-wrap justify-center ' >
+    <div className='flex flex-wrap justify-center  ' >
                 <button
         onClick={openModal}
-        className="fixed bottom-5 right-5 bg-custom-l-yellow hover:bg-yellow-600 text-black font-bold py-12 px-12 rounded-full shadow-lg z-10"
-      >
-        <span>+</span>
+        
+        className="fixed bottom-5 right-5 bg-blue-200 hover:bg-yellow-600 text-black font-bold lg:p-12 sm:p-6 rounded-full shadow-lg z-10"
+      > <ToastContainer />
+        <svg width="20mm" height="20mm" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8mm" y="0" width="4mm" height="20mm" fill="black"/>
+        <rect x="0" y="8mm" width="20mm" height="4mm" fill="black"/> 
+        </svg>
+
+
       </button>
 
       {isOpen && (
@@ -106,10 +113,12 @@ const FloatingButton = () => {
               </div>
               <div className="flex justify-end">
                 <button
+                 
                   type="submit"
                   className="bg-white hover:bg-blue-600 text-black font-bold py-2 px-4 rounded"
                 >
-                  Update
+                  Add Note
+                 
                 </button>
               </div>
             </form>

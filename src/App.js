@@ -8,7 +8,7 @@ import Navbar from './Component/Navbar';
 import SignupPage from './Component/SingupPage';
 import NoteContextProvider from './Context/NoteContextProvider';
 import Home from './Component/Home';
-import Alert from './Component/Alert';
+
 import AboutPage from './Component/AboutPage ';
 
 // import React, { useEffect } from 'react';
@@ -26,13 +26,13 @@ function App() {
   <NoteContextProvider>
      <Switch>
      <Navbar></Navbar>
-     <Alert></Alert>
+  
       {/* <FloatingButton></FloatingButton> */}
       <Routes>
       <Route exact path='/home'  element={<Home></Home>}></Route>
       <Route exact path='/aboutpage' element={<AboutPage></AboutPage>}></Route>
         <Route exact path='/contact' element={<Contact></Contact>}></Route>
-        <Route exact path='/Loginpage'  element={<LoginPage></LoginPage>}></Route>
+        <Route exact path='/'  element={<LoginPage></LoginPage>}></Route>
         <Route exact path='/SignupPage'  element={ <SignupPage></SignupPage>}></Route>
       </Routes>
     </Switch>  

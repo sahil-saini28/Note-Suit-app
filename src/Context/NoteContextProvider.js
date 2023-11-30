@@ -3,7 +3,7 @@ import userContextNote from './userContextNote'
 import { useState } from 'react';
 
 const NoteContextProvider = (props) => {
-const host = "http://localhost:5000"
+const host = "https://note-suit.onrender.com"
   const initialnotes = [ 
    
 ]
@@ -32,7 +32,7 @@ const getnotes = async() => {
   
 const addNote = async(title, description, tag) => {
   //todo api
-  const response = await fetch(`http://localhost:5000/api/notes/addnotes`, {
+  const response = await fetch(`https://note-suit.onrender.com/api/notes/addnotes`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -91,7 +91,13 @@ const json = response.json();
     
   }
  }
-  
+ //----------------------------------------------------------------------------------------------------------------alert
+ 
+ 
+
+
+
+
 
 
   return (

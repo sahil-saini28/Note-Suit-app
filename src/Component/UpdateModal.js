@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import userContextNote from '../Context/userContextNote';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Modal = (props) => {
+  const notify = () => toast("Note Updated!");
   const { editNote } = useContext(userContextNote)
   const { note  } = props;
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +31,9 @@ const Modal = (props) => {
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
+    notify();
     editNote(note._id,title,description)
     // Handle form submission logic here
 
@@ -51,7 +57,7 @@ const Modal = (props) => {
              className="bg-purple-600 hover:bg-purple-600 text-black font-bold py-2 px-4 rounded"
           ></div>
 
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-transparent rounded-lg shadow-lg p-8 max-w-md w-full mx-auto transition-all duration-300 ease-in-out">
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-custom-d-yellow rounded-lg shadow-lg p-8 max-w-md w-full mx-auto transition-all duration-300 ease-in-out">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold text-black">Title</h2>
               <button
@@ -69,6 +75,7 @@ const Modal = (props) => {
               </button>
             </div>
             <form onSubmit={handleSubmit}>
+            <ToastContainer />
               <div  className=" text-black mb-4">
                 <label
                   htmlFor="title"
@@ -104,7 +111,7 @@ const Modal = (props) => {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="bg-yellow-400 hover:bg-custom-blue text-white font-bold py-2 px-4 rounded"
+                  className="bg-custom-blue hover:bg-custom-blue text-white font-bold py-2 px-4 rounded"
                 >
                   Update
                 </button>

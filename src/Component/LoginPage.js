@@ -1,23 +1,33 @@
 import React from "react";
 import backgroundImage from '../Images/bg-image.png'
-import { useState } from "react";
+import { useState   } from "react";
 import {useNavigate} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import LoadingGif from "./LoadingGif";
 function LoginPage() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   const [email, setemail] = useState("");
   const [password, setpasword ] = useState("")
-
+  const notify = () => toast("Wow so easy!");
+  
+  
   const onuser = (e) => {
   setemail(e.target.value)
   };
+   
+
+
 
   const onpassword = (e)=>{
     setpasword(e.target.value)
   }
 
   const userLogin = async (email, password) => {
-    //todo api
-    const response = await fetch("http://localhost:5000/api/auth/login ", {
+    setIsLoading(true)
+    const response = await fetch("https://note-suit.onrender.com/api/auth/login ", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -28,22 +38,26 @@ function LoginPage() {
     if (json.success){
       localStorage.setItem('token', json.authtoken)
       navigate('/home');
-      //redirect
+      
+      setIsLoading(false)
     }
     else {
-      alert("akal ke andhe dhang se dall email or password")
+      
+      setIsLoading(false)
     }
-    console.log(json);
+    
   };
 
   const submitclick = (e) => {
     e.preventDefault()
+    notify()
     userLogin(email,password)
 
   };
 
   return (
-    
+    <div>  
+
     <div className="flex justify-center items-center h-screen bg-gray-900" style={{
       background: `url(${backgroundImage})`,
       backgroundAttachment: 'fixed',
@@ -53,7 +67,7 @@ function LoginPage() {
       
     }}>
       
-      <div className="bg-gray-900 p-8 rounded-md shadow-md w-80">
+     { isLoading===false? <div className="bg-gray-900 p-8 rounded-md shadow-md w-80">
         <h2 className="text-3xl text-white font-bold mb-4"> Login</h2>
         <form>
           <div className="mb-4">
@@ -85,21 +99,31 @@ function LoginPage() {
             />
           </div>
           <button
+          // disabled=`${value.}`
             onClick={submitclick}
             type="submit"
             className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition duration-300 w-full"
-          >
+          ><ToastContainer />
             Login
           </button>
         </form>
-        <p className="text-white text-center mt-4">
-          Don't have an account?{" "}
-          <a href="/" className="text-purple-600 hover:underline">
-            Sign Up
-          </a>
-        </p>
+        
+      
+      </div>: <div>
+        <LoadingGif></LoadingGif>
       </div>
+      
+  }
+
+
+
+
+
+
+
     </div>
+    </div>
+
   );
 }
 

@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from '../Images/bg-image.png'
+import LoadingGif from "./LoadingGif";
 function SignupPage() {
   const navigate = useNavigate();
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpasword] = useState("");
-
+  const [isLoading, setIsLoading] = useState(false);
+   
   const onname = (e) => {
     setname(e.target.value);
   };
@@ -21,8 +23,8 @@ function SignupPage() {
   };
 
   const usersingup = async (name,email, password) => {
-    //todo api
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    setIsLoading(true)
+    const response = await fetch("https://note-suit.onrender.com/api/auth/createuser", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -31,13 +33,13 @@ function SignupPage() {
     });
     const json = await response.json();
     if (json.success) {
-      // localStorage.setItem("token", json.authtoken);
+  
       navigate("/home");
-      //redirect
+      setIsLoading(false)
     } else {
-      alert("akal ke andhe dhang se dall email or passworddall ");
+      setIsLoading(false);
     }
-    console.log(json);
+    
   };
 
   const submitsingup = (e) => {
@@ -54,8 +56,9 @@ function SignupPage() {
       height: '100vh', 
       
     }}>
+      {isLoading===false?
       <div  className="bg-gray-900 p-8 rounded-md shadow-md w-80">
-        <h2 className="text-3xl text-white font-bold mb-4">Ninja Sign Up</h2>
+        <h2 className="text-3xl text-white font-bold mb-4"> Sign Up</h2>
         <form>
           <div className="mb-4">
             <label htmlFor="username" className="text-white block mb-2">
@@ -113,7 +116,13 @@ function SignupPage() {
             Login
           </a>
         </p>
+      </div>:<div>
+        <LoadingGif></LoadingGif>
       </div>
+}
+
+
+
     </div>
   );
 }

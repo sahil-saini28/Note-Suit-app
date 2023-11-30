@@ -21,7 +21,7 @@ useEffect( ()=>{
 
 
   return (
-   <> 
+   <div className='h-screen bg-black'> 
          <div className='flex flex-wrap  text-white gap-3 bg-black'>
         
         
@@ -36,7 +36,7 @@ useEffect( ()=>{
         
         </div>
       
-    </>
+    </div>
   )
 }
 

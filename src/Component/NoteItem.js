@@ -2,9 +2,11 @@ import React from 'react';
 import { useContext } from 'react';
 import userContextNote from '../Context/userContextNote';
 import Modal from './UpdateModal';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import backgroundImage from '../Images/bg-image.png'
 const NoteItem = (props) => {
+  const notify = () => toast(" Note Deleted!");
   const { deleteNote } = useContext(userContextNote);
   const { note } = props;
 
@@ -27,7 +29,7 @@ const NoteItem = (props) => {
       backgroundAttachment: 'fixed',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      
+      height: 'h-fill',
       
     }}>
      <h2 className=" text-xl font-semibold mb-2 ">Title </h2>
@@ -44,10 +46,11 @@ const NoteItem = (props) => {
        <div>
          <button
            onClick={() => {
+            notify ()
              deleteNote(note._id);
            }}
            className="bg-yellow-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
-         >
+         ><ToastContainer />
            Delete
          </button>
        </div>

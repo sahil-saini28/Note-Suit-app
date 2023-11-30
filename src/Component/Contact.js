@@ -1,15 +1,16 @@
 import React from 'react';
 
 import backgroundImage from '../Images/bg-image.png'
+import LoadingGif from './LoadingGif';
 function Contact() {
-  // Functions to handle redirection to respective social media profiles
+  
   const redirectToGitHub = () => {
-    window.location.href = 'https://github.com'; // Replace with your GitHub profile link
+    window.location.href = 'https://github.com/sahil-saini28'; 
   };
 
   const redirectToInstagram = () => {
-    window.location.href = 'https://instagram.com'; // Replace with your Instagram profile link
-  };
+    window.location.href = 'https://www.linkedin.com/in/sahilsaini28'; 
+  }
  
 
   return (
@@ -43,7 +44,7 @@ function Contact() {
           {/* Instagram logo SVG */}
           {/* ... */}
           <button onClick={redirectToInstagram} className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded">
-            Go to Instagram
+            Go to Linkedin
           </button>
         </div>
       </div>
@@ -51,8 +52,10 @@ function Contact() {
       {/* LinkedIn SVG */}
       <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 mt-4 mb-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
         {/* LinkedIn logo SVG */}
+       
         {/* ... */}
       </svg>
+      <LoadingGif></LoadingGif>
     </div>
   );
 }
