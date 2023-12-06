@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Note-Suit-app/static/css/main.cf946271.css",
+    "main.js": "/Note-Suit-app/static/js/main.8e0a3bca.js",
+    "static/js/787.677aebeb.chunk.js": "/Note-Suit-app/static/js/787.677aebeb.chunk.js",
+    "static/media/bg-image.png": "/Note-Suit-app/static/media/bg-image.21e308f70c7e91696941.png",
+    "static/media/loading.gif": "/Note-Suit-app/static/media/loading.6397dbf50729356f88c2.gif",
+    "index.html": "/Note-Suit-app/index.html",
+    "main.cf946271.css.map": "/Note-Suit-app/static/css/main.cf946271.css.map",
+    "main.8e0a3bca.js.map": "/Note-Suit-app/static/js/main.8e0a3bca.js.map",
+    "787.677aebeb.chunk.js.map": "/Note-Suit-app/static/js/787.677aebeb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf946271.css",
+    "static/js/main.8e0a3bca.js"
+  ]
+}
